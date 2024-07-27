@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Все люди</title>
+</head>
+<body>
+
+<div th:each="person : ${people}">
+    <a th:href="@{people/{id}(id=${person.getUser_id()})}"
+       th:utext="${person.getFullName() + ', ' + person.getYearOfBirth()}">user</a>
+</div>
+<br/>
+<hr/>
+<a href="/people/new">Добавить человека</a>
+</body>
+</html>
