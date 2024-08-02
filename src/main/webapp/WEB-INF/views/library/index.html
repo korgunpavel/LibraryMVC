@@ -7,8 +7,8 @@
 <body>
 
 <div th:each="book : ${library}">
-    <a th:href="@{library/{id}(id=${book.getBook_id()})}" th:utext="${book.getBookName() + ', '
-    + book.getAuthor() + ', ' + book.getBookYear()}">user</a>
+    <a th:href="@{library/{id}(id=${book.getBookId()})}" th:utext="${book.getTitle() + ', '
+    + book.getAuthor() + ', ' + book.getYear()}">user</a>
 </div>
 <br/>
 <hr/>

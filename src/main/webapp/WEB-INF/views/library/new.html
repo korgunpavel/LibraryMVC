@@ -6,9 +6,9 @@
 </head>
 <body>
 <form th:method="POST" th:action="@{/library}" th:object="${book}">
-    <label for="bookName">Введите название книги: </label>
-    <input th:type="text" th:field="*{bookName}" id="bookName"/>
-    <div style="color: red" th:if="${#fields.hasErrors('bookName')}" th:errors="*{bookName}">Ошибка названия книги</div>
+    <label for="title">Введите название книги: </label>
+    <input th:type="text" th:field="*{title}" id="title"/>
+    <div style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Ошибка названия книги</div>
     <br/>
     <br/>
     <label for="author">Введите автора: </label>
@@ -16,9 +16,9 @@
     <div style="color: red" th:if="${#fields.hasErrors('author')}" th:errors="*{author}">Ошибка автора</div>
     <br/>
     <br/>
-    <label for="bookYear">Введите год книги: </label>
-    <input th:type="text" th:field="*{bookYear}" id="bookYear"/>
-    <div style="color: red" th:if="${#fields.hasErrors('bookYear')}" th:errors="*{bookYear}">Ошибка года книги</div>
+    <label for="year">Введите год книги: </label>
+    <input th:type="text" th:field="*{year}" id="year"/>
+    <div style="color: red" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">Ошибка года книги</div>
     <br/>
     <br/>
     <label>

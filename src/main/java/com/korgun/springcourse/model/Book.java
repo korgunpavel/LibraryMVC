@@ -1,45 +1,66 @@
 package com.korgun.springcourse.model;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Pattern;
 
+import java.util.Date;
+
+@Entity
+@Table(name = "Book")
 public class Book {
-    private int book_id;
 
+    @Id
+    @Column(name = "book_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int bookId;
+
+    @Column(name = "title")
     @NotEmpty(message = "Name of book should be not empty")
-    private String bookName;
+    private String title;
 
+    @Column(name = "author")
     @NotEmpty(message = "Author name should be not empty")
     private String author;
 
+    @Column(name = "year")
     @Min(value = 1500, message = "Год должен быть больше, чем 1500")
-    private int bookYear;
+    private int year;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private Person owner;
+
+    @Column(name = "taken_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date takenAt;
+
+    @Transient
+    private boolean exp;
 
     public Book() {
     }
 
-    public Book(int book_id, String bookName, String author, int bookYear) {
-        this.book_id = book_id;
-        this.bookName = bookName;
+    public Book(String title, String author, int year) {
+        this.title = title;
         this.author = author;
-        this.bookYear = bookYear;
+        this.year = year;
     }
 
-    public int getBook_id() {
-        return book_id;
+    public int getBookId() {
+        return bookId;
     }
 
-    public void setBook_id(int book_id) {
-        this.book_id = book_id;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
-    public String getBookName() {
-        return bookName;
+    public String getTitle() {
+        return title;
     }
 
-    public void setBookName(String bookName) {
-        this.bookName = bookName;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getAuthor() {
@@ -50,11 +71,45 @@ public class Book {
         this.author = author;
     }
 
-    public int getBookYear() {
-        return bookYear;
+    public int getYear() {
+        return year;
     }
 
-    public void setBookYear(int bookYear) {
-        this.bookYear = bookYear;
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public Person getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Person owner) {
+        this.owner = owner;
+    }
+
+    public Date getTakenAt() {
+        return takenAt;
+    }
+
+    public void setTakenAt(Date takenAt) {
+        this.takenAt = takenAt;
+    }
+
+    public boolean isExp() {
+        return exp;
+    }
+
+    public void setExp(boolean exp) {
+        this.exp = exp;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookId=" + bookId +
+                ", title='" + title + '\'' +
+                ", author='" + author + '\'' +
+                ", year=" + year +
+                '}';
     }
 }
