@@ -56,7 +56,7 @@ public class PeopleService {
             Hibernate.initialize(person.get().getBooks());
             List<Book> books = person.get().getBooks();
             for(Book book:books){
-                long diff = book.getTakenAt().getTime() - new Date().getTime();
+                long diff = new Date().getTime() - book.getTakenAt().getTime();
                 if(diff> TimeUnit.SECONDS.toMillis(10)){
                     book.setExp(true);
                 }
